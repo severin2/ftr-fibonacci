@@ -1,19 +1,24 @@
-import './App.css';
-
+import { withStyles } from '@material-ui/core';
 import React from 'react';
 
-import logo from './logo.svg';
-import NumberInput from './number-input/NumberInput';
+import NumberCollector from './components/NumberCollector';
 
-function App() {
+const styles = theme => ({
+  column: {
+    margin: '1em',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+});
+
+function App(props) {
+  const { classes } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <NumberInput></NumberInput>
-      </header>
+    <div className={classes.column}>
+      <NumberCollector />
     </div>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);
