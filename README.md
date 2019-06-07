@@ -1,5 +1,7 @@
 # Fibonacci Number Checker
 
+A simple app to check if numbers are members of the [Fibonacci Sequence](http://mathworld.wolfram.com/FibonacciNumber.html). Check it out [here](https://react-fibonacci.herokuapp.com/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
