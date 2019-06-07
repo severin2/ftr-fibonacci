@@ -41,7 +41,7 @@ class NumberCollector extends Component {
    */
   calculateFibonnaciFor(theNumber) {
     return this.solver
-      .checkValue(theNumber)
+      .checkIsFibonacciNumber(theNumber)
       .then(isFibonacci => {
         const currentNumbers = this.state.numbers;
         currentNumbers[theNumber].isFibonacci = isFibonacci;

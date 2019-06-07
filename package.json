@@ -1,11 +1,15 @@
 {
   "name": "react-fibonacci",
   "version": "0.1.0",
+  "description": "a simple react app for checking if given numbers are in the Fibonacci Sequence",
+  "author": {
+    "email": "severin.bartmess@gmail.com",
+    "name": "Severin Bartmess"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",
-    "clsx": "^1.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
@@ -30,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.8.6"
   }
 }

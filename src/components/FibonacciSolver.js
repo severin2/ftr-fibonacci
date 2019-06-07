@@ -32,7 +32,7 @@ export default class FibonacciSolver {
    * @param {string|number} value
    * @return {Promise<boolean>}
    */
-  checkValue(value) {
+  checkIsFibonacciNumber(value) {
     return new Promise((resolve, reject) => {
       const valAsNumber = parseInt(value, 10);
 
