@@ -1,4 +1,12 @@
-import { IconButton, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
+import {
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@material-ui/core';
 import FilterList from '@material-ui/icons/FilterList';
 import { withStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
@@ -10,7 +18,7 @@ const styles = theme => ({
   },
   list: {
     padding: '0',
-    margin: '1em'
+    margin: '1em',
   },
   listItem: {
     listStyleType: 'none',
@@ -85,6 +93,9 @@ export class NumberList extends Component {
   get filteredNumbers() {
     const { numbers } = this.props;
     const { fibsOnly } = this.state;
+    if (!numbers) {
+      return {};
+    }
     return Object.keys(numbers).reduce((newNumbers, key) => {
       const value = numbers[key];
       const { isFibonacci } = value;
@@ -109,16 +120,15 @@ export class NumberList extends Component {
     return '';
   }
 
-  render() {
-    const { classes, numbers } = this.props;
-    const keys = Object.keys(this.filteredNumbers).sort(this.numberComparator);
-    if (!keys.length) {
-      return (
-        <div className={classes.space}>
-          <Typography>No numbers</Typography>
-        </div>
-      );
-    }
+  renderNoNumbers(classes) {
+    return (
+      <div className={classes.space}>
+        <Typography>No numbers</Typography>
+      </div>
+    );
+  }
+
+  renderNumbersTable(classes, keys, numbers) {
     return (
       <Table className={classes.table}>
         <TableHead>
@@ -152,6 +162,15 @@ export class NumberList extends Component {
         </TableBody>
       </Table>
     );
+  }
+
+  render() {
+    const { classes, numbers } = this.props;
+    const keys = Object.keys(this.filteredNumbers).sort(this.numberComparator);
+    if (!keys.length) {
+      return this.renderNoNumbers(classes);
+    }
+    return this.renderNumbersTable(classes, keys, numbers);
   }
 }
 

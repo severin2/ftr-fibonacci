@@ -34,6 +34,10 @@ class NumberInput extends React.Component {
     return this.state.value && !this.state.errors.number;
   }
 
+  /**
+   * Bound to the onChange of the number input
+   * @param {Event} event
+   */
   handleInputChange(event) {
     const value = event.target.value;
     const isNumber = !Number.isNaN(Number(value));
@@ -46,6 +50,10 @@ class NumberInput extends React.Component {
     });
   }
 
+  /**
+   * Bound to the onClick of the button and onSubmit
+   * @param {*} event
+   */
   handleAddNumber(event) {
     event.preventDefault();
     if (this.isStateValid) {
