@@ -5,7 +5,7 @@ export default class FibonacciSolver {
 
   /**
    *  returns the nth fibonacci number
-   *  @param {number} theNumber
+   *  @param {number} n
    *  @return {number}
    */
   _solve(n) {
@@ -17,18 +17,26 @@ export default class FibonacciSolver {
     return value;
   }
 
-  _solveFibonacciUpto(aNumber) {
-    while (this._known[this._known.length - 1] < aNumber) {
+  /**
+   * find fib numbers until the largest number is at least the given number
+   * @param {number} value
+   */
+  _solveFibonacciUpto(value) {
+    while (this._known[this._known.length - 1] < value) {
       this._solve(this._known.length);
     }
   }
 
+  /**
+   * Check for a given number in the set of known fib numbers
+   * O(n)
+   * @param {number} value
+   */
   _isNumberInFibSequence(value) {
     return this._known.indexOf(value) > -1;
   }
 
   /**
-   *
    * @param {string|number} value
    * @return {Promise<boolean>}
    */

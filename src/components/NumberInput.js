@@ -1,4 +1,10 @@
-import { IconButton, Input, InputAdornment, Typography, withStyles } from '@material-ui/core';
+import {
+  IconButton,
+  Input,
+  InputAdornment,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
@@ -21,8 +27,7 @@ class NumberInput extends React.Component {
     this.state = {
       value: '',
       errors: {
-        number: false,
-        maximum: false,
+        number: false
       },
     };
   }
@@ -71,13 +76,14 @@ class NumberInput extends React.Component {
           <InputLabel htmlFor="number-input">Enter a Number</InputLabel>
           <Input
             id="number-input"
+            aria-label="number input"
             value={value}
             onChange={e => this.handleInputChange(e)}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   disabled={!valid}
-                  aria-label="Add Number Button"
+                  aria-label="add number button"
                   onClick={e => this.handleAddNumber(e)}
                 >
                   <AddCircleOutline />
