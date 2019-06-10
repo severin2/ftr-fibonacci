@@ -1,4 +1,4 @@
-import { Container, Divider, IconButton, Snackbar, Typography, withStyles } from '@material-ui/core';
+import { Container, IconButton, Snackbar, Typography, withStyles } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import React, { Component } from 'react';
 
