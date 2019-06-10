@@ -27,7 +27,7 @@ class NumberInput extends React.Component {
     this.state = {
       value: '',
       errors: {
-        number: false
+        number: false,
       },
     };
   }
@@ -43,7 +43,7 @@ class NumberInput extends React.Component {
    * Bound to the onChange of the number input
    * @param {Event} event
    */
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const value = event.target.value;
     const isNumber = !Number.isNaN(Number(value));
 
@@ -59,7 +59,7 @@ class NumberInput extends React.Component {
    * Bound to the onClick of the button and onSubmit
    * @param {*} event
    */
-  handleAddNumber(event) {
+  handleAddNumber = (event) => {
     event.preventDefault();
     if (this.isStateValid) {
       this.props.onAdd(this.state.value);
@@ -82,6 +82,7 @@ class NumberInput extends React.Component {
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
+                  id="addNumberBtn"
                   disabled={!valid}
                   aria-label="add number button"
                   onClick={e => this.handleAddNumber(e)}

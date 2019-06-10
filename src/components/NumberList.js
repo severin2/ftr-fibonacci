@@ -77,7 +77,7 @@ export class NumberList extends Component {
     return value;
   }
 
-  handleToggleFibs() {
+  handleToggleFibs = () => {
     const { fibsOnly } = this.state;
     let nextValue;
     if (fibsOnly === null) {
@@ -120,7 +120,7 @@ export class NumberList extends Component {
     return '';
   }
 
-  renderNoNumbers(classes) {
+  renderNoNumbers = (classes) => {
     return (
       <div className={classes.space}>
         <Typography>No numbers</Typography>
@@ -128,7 +128,7 @@ export class NumberList extends Component {
     );
   }
 
-  renderNumbersTable(classes, keys, numbers) {
+  renderNumbersTable = (classes, keys, numbers) => {
     return (
       <Table className={classes.table}>
         <TableHead>

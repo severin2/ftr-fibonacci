@@ -32,14 +32,14 @@ class NumberCollector extends Component {
       feedbackMsg: '',
       feedbackOpen: false,
     };
-    this.handleOnAdd = this.handleOnAdd.bind(this);
   }
 
   /**
    *
    * @param {number} theNumber
+   * @return {Promse<void>}
    */
-  calculateFibonnaciFor(theNumber) {
+  calculateFibonnaciFor = (theNumber) => {
     return this.solver
       .checkIsFibonacciNumber(theNumber)
       .then(isFibonacci => {
@@ -61,22 +61,30 @@ class NumberCollector extends Component {
       });
   }
 
-  handleOnAdd(addedNumber) {
+  /**
+   *
+   * @param {*} addedNumber
+   * @return {Promse<void>}
+   *
+   */
+  handleOnAdd = (addedNumber) =>{
+    let promise;
     const currentNumbers = this.state.numbers;
     if (currentNumbers[addedNumber]) {
       currentNumbers[addedNumber].count += 1;
     } else {
       currentNumbers[addedNumber] = { count: 1, isFibonacci: null };
-      this.calculateFibonnaciFor(addedNumber);
+      promise = this.calculateFibonnaciFor(addedNumber);
     }
     this.setState({
       numbers: currentNumbers,
       feedbackMsg: `Checking: ${addedNumber}`,
       feedbackOpen: true,
     });
+    return promise || Promise.resolve();
   }
 
-  handleClearNumbers() {
+  handleClearNumbers = () => {
     this.setState({ numbers: {} });
     this.setState({
       feedbackMsg: `Cleared the numbers`,
@@ -100,10 +108,11 @@ class NumberCollector extends Component {
             Fibonacci Sequence
           </a>
         </Typography>
-        <Divider variant="middle" />
+
         <div className={classes.row}>
           <NumberInput onAdd={this.handleOnAdd} />
           <IconButton
+            id="clearNumbersBtn"
             aria-label="clear numbers"
             onClick={e => this.handleClearNumbers(e)}
           >
